@@ -1,0 +1,306 @@
+@charset "UTF-8";
+@import "reset";
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Orbitron&family=Press+Start+2P&family=Rampart+One&display=swap");
+
+body {
+	box-sizing: border-box;
+	margin: 0px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	position: relative;
+
+	.overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: #0000008e;
+		z-index: 1;
+		display: none;
+		transition: 0.5s;
+		animation: smooth linear 0.2s;
+	}
+
+	.container {
+		position: relative;
+		bottom: 5%;
+
+		#popup {
+			width: 500px;
+			padding: 40px;
+			background: #fff;
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 15px;
+			box-shadow: 9px 15px 15px rgba(0, 0, 0, 0.169);
+			display: none;
+			animation: smooth linear 0.5s;
+			//transition: 0.5s;
+			z-index: 2;
+
+			.content {
+				width: 100%;
+				min-height: 150px;
+				color: #000;
+				font-size: 25px;
+			}
+
+			.close {
+				width: 78px;
+				height: 38px;
+				text-align: center;
+				position: absolute;
+				bottom: 30px;
+				right: 40px;
+				background: rgb(12, 164, 148);
+				letter-spacing: 0.5px;
+				cursor: pointer;
+				font: normal 13px/3 "arial";
+				color: #fff;
+				border-radius: 4px;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+				transition: all 0.2s ease-out;
+
+				&:hover {
+					text-shadow: 0 0.5px 0 #fff;
+					box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+				}
+			}
+		}
+
+		p {
+			position: absolute;
+			bottom: 5px;
+			right: 10px;
+			color: rgb(240, 237, 219);
+			font-size: 12px;
+		}
+
+		header {
+			height: 200px;
+			width: 620px; //왜 이거 설정하면 씨발 안돼
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+
+			.name {
+				position: absolute;
+				top: 65px;
+				left: 0px;
+				font: normal 95px "rampart one";
+				color: rgb(12, 164, 148);
+				display: block;
+			}
+
+			.panel {
+				position: absolute;
+				display: flex;
+				top: 0px;
+				width: 100%;
+				height: 30%;
+
+				.oScore {
+					height: 100%;
+					width: 33.3%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+					font: normal 75px "bungee shade";
+					color: rgb(71, 122, 223);
+
+					.oNum {
+						color: #000;
+						padding-left: 15px;
+						font-size: 60px;
+					}
+				}
+				.scoreResetPanel {
+					left: 50%;
+					height: 100%;
+					width: 33.4%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					.scoreResetBtn {
+						width: 75px;
+						height: 35px;
+						margin-top: 15px;
+						text-align: center;
+						background: #fff;
+						cursor: pointer;
+						font: normal 12px/2.8 "arial";
+						color: rgb(12, 164, 148);
+						border: 1px solid rgb(12, 164, 148);
+						border-radius: 4px;
+						box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+						transition: all 0.2s ease-out;
+
+						&:hover {
+							text-shadow: 0 0.5px 0 rgb(12, 164, 148);
+							box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
+						}
+					}
+				}
+				.xScore {
+					right: 0%;
+					height: 100%;
+					width: 33.3%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+					font: normal 75px "bungee shade";
+					color: rgb(228, 74, 74);
+
+					.xNum {
+						padding-left: 15px;
+						color: #000;
+						font-size: 60px;
+					}
+				}
+			}
+		}
+
+		.canvas {
+			height: 620px;
+			width: 620px;
+			margin-top: 0px;
+			background: rgb(19, 187, 171);
+			position: relative;
+			padding: 40px;
+
+			.box:nth-of-type(1) {
+				border-left: 4px solid rgb(19, 187, 171);
+				border-right: 4px solid rgb(12, 164, 148);
+				border-top: 4px solid rgb(19, 187, 171);
+				border-bottom: 4px solid rgb(12, 164, 148);
+			}
+
+			.box:nth-of-type(2) {
+				border-left: 4px solid rgb(12, 164, 148);
+				border-right: 4px solid rgb(12, 164, 148);
+				border-top: 4px solid rgb(19, 187, 171);
+				border-bottom: 4px solid rgb(12, 164, 148);
+			}
+			.box:nth-of-type(3) {
+				border-left: 4px solid rgb(12, 164, 148);
+				border-right: 4px solid rgb(19, 187, 171);
+				border-top: 4px solid rgb(19, 187, 171);
+				border-bottom: 4px solid rgb(12, 164, 148);
+			}
+
+			.box:nth-of-type(4) {
+				border-left: 4px solid rgb(19, 187, 171);
+				border-right: 4px solid rgb(12, 164, 148);
+				border-top: 4px solid rgb(12, 164, 148);
+				border-bottom: 4px solid rgb(12, 164, 148);
+			}
+
+			.box:nth-of-type(5) {
+				border-left: 4px solid rgb(12, 164, 148);
+				border-right: 4px solid rgb(12, 164, 148);
+				border-top: 4px solid rgb(12, 164, 148);
+				border-bottom: 4px solid rgb(12, 164, 148);
+			}
+
+			.box:nth-of-type(6) {
+				border-right: 4px solid rgb(19, 187, 171);
+				border-left: 4px solid rgb(12, 164, 148);
+				border-top: 4px solid rgb(12, 164, 148);
+				border-bottom: 4px solid rgb(12, 164, 148);
+			}
+
+			.box:nth-of-type(7) {
+				border-left: 4px solid rgb(19, 187, 171);
+				border-right: 4px solid rgb(12, 164, 148);
+				border-top: 4px solid rgb(12, 164, 148);
+				border-bottom: 4px solid rgb(19, 187, 171);
+			}
+
+			.box:nth-of-type(8) {
+				border-left: 4px solid rgb(12, 164, 148);
+				border-right: 4px solid rgb(12, 164, 148);
+				border-top: 4px solid rgb(12, 164, 148);
+				border-bottom: 4px solid rgb(19, 187, 171);
+			}
+
+			.box:nth-of-type(9) {
+				border-left: 4px solid rgb(12, 164, 148);
+				border-right: 4px solid rgb(19, 187, 171);
+				border-top: 4px solid rgb(12, 164, 148);
+				border-bottom: 4px solid rgb(19, 187, 171);
+			}
+
+			.box {
+				height: 33.3%;
+				width: 33.3%;
+				float: left;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-sizing: border-box;
+			}
+
+			div {
+				width: 100%;
+				height: 100%;
+				display: inline-block;
+				cursor: pointer;
+			}
+
+			.O {
+				width: 75%;
+				height: 75%;
+				border: 14px solid rgb(240, 237, 219);
+				border-radius: 50%;
+			}
+			.X {
+				//left: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 84%;
+				height: 14px;
+				position: relative;
+
+				&::before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					background: rgba(67, 69, 69, 0.9);
+					position: absolute;
+					transform: rotate(45deg);
+				}
+
+				&::after {
+					content: "";
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background: rgba(67, 69, 69, 0.775);
+					transform: rotate(-45deg);
+				}
+			}
+		}
+	}
+}
+
+@keyframes smooth {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}

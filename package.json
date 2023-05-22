@@ -1,0 +1,11 @@
+{
+  "name": "ttt",
+  "version": "1.0.0",
+  "description": "side project",
+  "main": "index.js",
+  "scripts": {
+    "styles": "node-sass --watch scss/style.scss css/style.css"
+  },
+  "author": "",
+  "license": "ISC"
+}
